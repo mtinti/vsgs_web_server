@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function initMain() {
         try {
-            const resp = await fetch('mainCsvData.csv');
+            const resp = await fetch('data/mainCsvData.csv');
             const csv = await resp.text();
             parseMainData(csv);
             createChartItems();
