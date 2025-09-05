@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 Main_VSG_perc: +d.Main_VSG_perc,
                 Mito_perc: +d.Mito_perc
             }));
-            renderSwarm(data, 'Main_VSG_perc', '#qc-main');
-            renderSwarm(data, 'Mito_perc', '#qc-mito');
+            renderBoxPlot(data, 'Main_VSG_perc', '#qc-main');
+            renderBoxPlot(data, 'Mito_perc', '#qc-mito');
         } catch (err) {
             console.error('Failed to load QC CSV', err);
         } finally {
@@ -20,27 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderSwarm(data, column, selector) {
+    function renderBoxPlot(data, column, selector) {
         const svg = d3.select(selector);
         const width = svg.node().getBoundingClientRect().width;
         const height = svg.node().getBoundingClientRect().height;
         const margin = { top: 10, right: 20, bottom: 30, left: 20 };
 
-        const swarmData = data.map(d => ({ ...d }));
-
+        const values = data.map(d => d[column]).sort(d3.ascending);
         const x = d3.scaleLinear()
-            .domain([0, d3.max(swarmData, d => d[column])]).nice()
+            .domain([0, d3.max(values)]).nice()
             .range([margin.left, width - margin.right]);
 
         const yCenter = (height - margin.top - margin.bottom) / 2 + margin.top;
+        const boxHeight = Math.min(40, height - margin.top - margin.bottom);
 
-        const simulation = d3.forceSimulation(swarmData)
-            .force('x', d3.forceX(d => x(d[column])).strength(1))
-            .force('y', d3.forceY(yCenter))
-            .force('collide', d3.forceCollide(4))
-            .stop();
-
-        for (let i = 0; i < 250; ++i) simulation.tick();
+        const q1 = d3.quantile(values, 0.25);
+        const median = d3.quantile(values, 0.5);
+        const q3 = d3.quantile(values, 0.75);
+        const min = d3.min(values);
+        const max = d3.max(values);
 
         svg.attr('width', width).attr('height', height);
 
@@ -53,9 +51,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
         svg.selectAll('.axis path, .axis line').attr('stroke', '#4b5563');
 
+        // Draw box
+        svg.append('rect')
+            .attr('x', x(q1))
+            .attr('y', yCenter - boxHeight / 2)
+            .attr('width', x(q3) - x(q1))
+            .attr('height', boxHeight)
+            .attr('fill', '#1f2937')
+            .attr('stroke', '#d1d5db');
+
+        // Median line
+        svg.append('line')
+            .attr('x1', x(median))
+            .attr('x2', x(median))
+            .attr('y1', yCenter - boxHeight / 2)
+            .attr('y2', yCenter + boxHeight / 2)
+            .attr('stroke', '#d1d5db');
+
+        // Whiskers
+        svg.append('line')
+            .attr('x1', x(min))
+            .attr('x2', x(max))
+            .attr('y1', yCenter)
+            .attr('y2', yCenter)
+            .attr('stroke', '#d1d5db');
+
+        svg.append('line')
+            .attr('x1', x(min))
+            .attr('x2', x(min))
+            .attr('y1', yCenter - boxHeight / 4)
+            .attr('y2', yCenter + boxHeight / 4)
+            .attr('stroke', '#d1d5db');
+
+        svg.append('line')
+            .attr('x1', x(max))
+            .attr('x2', x(max))
+            .attr('y1', yCenter - boxHeight / 4)
+            .attr('y2', yCenter + boxHeight / 4)
+            .attr('stroke', '#d1d5db');
+
+        // Overlay points
+        const points = data.map(d => ({ ...d }));
+        const simulation = d3.forceSimulation(points)
+            .force('x', d3.forceX(d => x(d[column])).strength(1))
+            .force('y', d3.forceY(yCenter).strength(1))
+            .force('collide', d3.forceCollide(4))
+            .stop();
+
+        for (let i = 0; i < 250; ++i) simulation.tick();
+
         svg.append('g')
             .selectAll('circle')
-            .data(swarmData)
+            .data(points)
             .enter()
             .append('circle')
             .attr('cx', d => d.x)

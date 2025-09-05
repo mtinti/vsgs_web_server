@@ -1,4 +1,4 @@
-.swarm-container {
+.boxplot-container {
     position: relative;
     width: 100%;
     height: 256px; /* Tailwind h-64 equivalent */
