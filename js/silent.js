@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function initSilent() {
         try {
-            const resp = await fetch('silentCsvData.csv');
+            const resp = await fetch('data/silentCsvData.csv');
             const csv = await resp.text();
             parseSilentData(csv);
             createLeaderboardItems();
