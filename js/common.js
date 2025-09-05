@@ -1,21 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navSilent = document.getElementById('nav-silent');
     const navMain = document.getElementById('nav-main');
+    const navQC = document.getElementById('nav-qc');
     const pageSilent = document.getElementById('page-silent');
     const pageMain = document.getElementById('page-main');
+    const pageQC = document.getElementById('page-qc');
 
     function switchPage(page) {
-        if (page === 'silent') {
-            pageSilent.classList.add('active');
-            pageMain.classList.remove('active');
-            navSilent.classList.add('active');
-            navMain.classList.remove('active');
-        } else {
-            pageSilent.classList.remove('active');
-            pageMain.classList.add('active');
-            navSilent.classList.remove('active');
-            navMain.classList.add('active');
-        }
+        pageSilent.classList.toggle('active', page === 'silent');
+        pageMain.classList.toggle('active', page === 'main');
+        pageQC.classList.toggle('active', page === 'qc');
+        navSilent.classList.toggle('active', page === 'silent');
+        navMain.classList.toggle('active', page === 'main');
+        navQC.classList.toggle('active', page === 'qc');
     }
 
     navSilent.addEventListener('click', (e) => {
@@ -26,5 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     navMain.addEventListener('click', (e) => {
         e.preventDefault();
         switchPage('main');
+    });
+
+    navQC.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchPage('qc');
     });
 });
