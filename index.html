@@ -182,12 +182,17 @@
 
             async function loadCsvData() {
                 try {
+                    console.log('Fetching CSV data files...');
                     const [silentResp, mainResp] = await Promise.all([
                         fetch('silentCsvData.csv'),
                         fetch('mainCsvData.csv')
                     ]);
+                    console.log('Silent CSV response:', silentResp.status, silentResp.statusText);
+                    console.log('Main CSV response:', mainResp.status, mainResp.statusText);
                     silentCsvData = await silentResp.text();
                     mainCsvData = await mainResp.text();
+                    console.log('Silent CSV length:', silentCsvData.length);
+                    console.log('Main CSV length:', mainCsvData.length);
                 } catch (err) {
                     console.error('Failed to load CSV data', err);
                 }
@@ -216,18 +221,20 @@
 
             // --- App Initialization ---
             async function init() {
+                console.log('Initializing application...');
                 await loadCsvData();
                 parseSilentData();
                 parseMainData();
-                
+
                 createLeaderboardItems();
                 createChartItems();
-                
+
                 renderLeaderboard();
                 renderChart();
 
                 loader.style.display = 'none';
                 setupEventListeners();
+                console.log('Application initialized');
             }
 
             // --- Navigation ---
@@ -255,6 +262,7 @@
                     headers.forEach((h, i) => entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0);
                     return entry;
                 }).filter(d => d.Experiment);
+                console.log('Parsed silent CSV rows:', silentData.length);
             }
 
             function parseMainData() {
@@ -267,6 +275,7 @@
                     entry.magnitude = Math.abs(entry.change);
                     return entry;
                 }).filter(d => d.Experiment);
+                console.log('Parsed main CSV rows:', mainData.length);
             }
 
             // --- LEADERBOARD (SILENT) FUNCTIONS ---
