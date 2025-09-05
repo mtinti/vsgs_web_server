@@ -2,19 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const tooltip = document.getElementById('tooltip');
     const chartContainer = document.getElementById('chart-container');
     const filtersMain = document.getElementById('filters-main');
-    let mainData = [], currentMainSort = 'magnitude';
+    let mainData = [], currentMainSort = 'magnitude', expConfig = {};
     const itemHeightMain = 40;
 
     async function initMain() {
         try {
-            const resp = await fetch('data/mainCsvData.csv');
-            const csv = await resp.text();
+            const [csvResp, configResp] = await Promise.all([
+                fetch('data/mainCsvData.csv'),
+                fetch('data/exp_config.json')
+            ]);
+            const csv = await csvResp.text();
+            expConfig = await configResp.json();
             parseMainData(csv);
             createChartItems();
             renderChart();
             setupFilters();
         } catch (err) {
-            console.error('Failed to load main CSV', err);
+            console.error('Failed to load data', err);
         }
     }
 
@@ -39,10 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = 'chart-item';
             div.dataset.experiment = item.Experiment;
-            div.innerHTML = `<div class="bar-container"><div class="diverging-bar"></div><div class="item-label"></div></div>`;
+            div.innerHTML = `<div class="bar-container"><div class="diverging-bar"></div><a class="item-label" target="_blank" rel="noopener"></a></div>`;
+            const label = div.querySelector('.item-label');
+            label.textContent = item.Experiment;
+            const config = expConfig[item.Experiment] || {};
+            if (config.pubmed_id) {
+                label.href = `https://pubmed.ncbi.nlm.nih.gov/${config.pubmed_id}/`;
+            }
             div.addEventListener('mouseover', () => {
                 tooltip.style.display = 'block';
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>Change: ${item.change.toExponential(4)}`;
+                const title = config.title ? `${config.title}<br>` : '';
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}Change: ${item.change.toExponential(4)}`;
             });
             div.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';

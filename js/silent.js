@@ -4,13 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const leaderboardContainer = document.getElementById('leaderboard-container');
     const filtersSilent = document.getElementById('filters-silent');
     const expanderContainer = document.getElementById('expander-container');
-    let silentData = [], currentSilentSort = 'sum', isExpanded = false;
+    let silentData = [], currentSilentSort = 'sum', isExpanded = false, expConfig = {};
     const itemHeightSilent = 76, displayLimit = 20;
 
     async function initSilent() {
         try {
-            const resp = await fetch('data/silentCsvData.csv');
-            const csv = await resp.text();
+            const [csvResp, configResp] = await Promise.all([
+                fetch('data/silentCsvData.csv'),
+                fetch('data/exp_config.json')
+            ]);
+            const csv = await csvResp.text();
+            expConfig = await configResp.json();
             parseSilentData(csv);
             createLeaderboardItems();
             renderLeaderboard();
@@ -46,15 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="rank-text"></span>
                 </div>
                 <div class="flex-grow overflow-hidden">
-                    <p class="font-semibold text-white truncate">${item.Experiment}</p>
+                    <a class="font-semibold text-white truncate" target="_blank" rel="noopener"></a>
                     <div class="w-full bg-black/30 rounded-full h-2.5 mt-1 overflow-hidden">
                         <div class="bar bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full" style="width: 0%; transition: width 0.6s ease;"></div>
                     </div>
                 </div>`;
+            const link = li.querySelector('a');
+            link.textContent = item.Experiment;
+            const config = expConfig[item.Experiment] || {};
+            if (config.pubmed_id) {
+                link.href = `https://pubmed.ncbi.nlm.nih.gov/${config.pubmed_id}/`;
+            }
             li.addEventListener('mouseover', () => {
                 tooltip.style.display = 'block';
                 const value = item[currentSilentSort];
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${currentSilentSort.toUpperCase()}: ${value.toExponential(4)}`;
+                const title = config.title ? `${config.title}<br>` : '';
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}${currentSilentSort.toUpperCase()}: ${value.toExponential(4)}`;
             });
             li.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';
