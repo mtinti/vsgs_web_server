@@ -256,10 +256,13 @@
             function parseSilentData() {
                 const lines = silentCsvData.trim().split('\n');
                 const headers = lines[0].split(',').map(h => h.trim());
+                if (!headers[0]) headers[0] = 'Experiment';
                 silentData = lines.slice(1).map(line => {
                     const values = line.split(',');
                     const entry = {};
-                    headers.forEach((h, i) => entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0);
+                    headers.forEach((h, i) => {
+                        entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0;
+                    });
                     return entry;
                 }).filter(d => d.Experiment);
                 console.log('Parsed silent CSV rows:', silentData.length);
@@ -268,10 +271,14 @@
             function parseMainData() {
                 const lines = mainCsvData.trim().split('\n');
                 const headers = lines[0].split(',').map(h => h.trim());
+                if (!headers[0]) headers[0] = 'Experiment';
+                if (headers[1] && headers[1] !== 'change') headers[1] = 'change';
                 mainData = lines.slice(1).map(line => {
                     const values = line.split(',');
                     const entry = {};
-                    headers.forEach((h, i) => entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0);
+                    headers.forEach((h, i) => {
+                        entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0;
+                    });
                     entry.magnitude = Math.abs(entry.change);
                     return entry;
                 }).filter(d => d.Experiment);
