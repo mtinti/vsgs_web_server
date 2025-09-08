@@ -21,18 +21,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function handleHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (['silent', 'main', 'qc'].includes(hash)) {
+            switchPage(hash);
+        } else {
+            switchPage('silent');
+        }
+    }
+
     navSilent.addEventListener('click', (e) => {
         e.preventDefault();
-        switchPage('silent');
+        window.location.hash = 'silent';
     });
 
     navMain.addEventListener('click', (e) => {
         e.preventDefault();
-        switchPage('main');
+        window.location.hash = 'main';
     });
 
     navQC.addEventListener('click', (e) => {
         e.preventDefault();
-        switchPage('qc');
+        window.location.hash = 'qc';
     });
+
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
 });
