@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/silent.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -65,6 +66,7 @@
             <a href="#" id="nav-silent" class="nav-link active text-gray-400 font-medium pb-1">Silent VSG Modulation</a>
             <a href="#" id="nav-main" class="nav-link text-gray-400 font-medium pb-1">Main VSG Modulation</a>
             <a href="#" id="nav-qc" class="nav-link text-gray-400 font-medium pb-1">QC Leaderboard</a>
+            <a href="#" id="nav-config" class="nav-link text-gray-400 font-medium pb-1">Experiment Config</a>
         </nav>
 
         <!-- Page 1: Silent VSG Leaderboard -->
@@ -122,17 +124,43 @@
                 <button data-sort="Main_VSG_perc" class="filter-btn active font-semibold py-2 px-4 rounded-full bg-gray-800 hover:bg-gray-700">Main VSG %</button>
                 <button data-sort="Mito_perc" class="filter-btn font-semibold py-2 px-4 rounded-full bg-gray-800 hover:bg-gray-700">Mito %</button>
             </div>
-            <div id="qc-leaderboard" class="relative w-full mx-auto max-w-4xl"></div>
-            <div id="qc-expander" class="text-center mt-6"></div>
+        <div id="qc-leaderboard" class="relative w-full mx-auto max-w-4xl"></div>
+        <div id="qc-expander" class="text-center mt-6"></div>
+        </div>
+        
+        <!-- Page 4: Experiment Config Table -->
+        <div id="page-config" class="page-container">
+            <header class="text-center mb-8">
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                    Experiment Configuration
+                </h1>
+                <p class="mt-2 text-lg text-gray-400">Experiments and SRA Runs</p>
+            </header>
+            <div class="overflow-x-auto">
+                <table id="exp-table" class="min-w-full text-sm text-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2">Experiment</th>
+                            <th class="px-4 py-2">Type</th>
+                            <th class="px-4 py-2">SRA ID</th>
+                            <th class="px-4 py-2">PubMed ID</th>
+                            <th class="px-4 py-2">Title</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
         <div id="loader" class="text-center py-10"><p class="text-gray-400">Loading data...</p></div>
     </div>
 
     <div id="tooltip"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" ></script>
     <script src="js/common.js"></script>
     <script src="js/silent.js"></script>
     <script src="js/main.js"></script>
     <script src="js/qc.js"></script>
+    <script src="js/exp_config_table.js"></script>
 </body>
 </html>
