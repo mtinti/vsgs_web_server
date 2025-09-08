@@ -516,7 +516,8 @@
             "SRR7401112"
         ],
         "top_vsg": [
-            "Tb427VSG-2"
+            "Tb427VSG-2",
+            "Tb427VSG-11"
         ],
         "pubmed_id": 30420356,
         "title": "Nuclear Phosphatidylinositol 5-Phosphatase Is Essential for Allelic Exclusion of Variant Surface Glycoprotein Genes in Trypanosomes ",
@@ -534,11 +535,12 @@
             "SRR23839017"
         ],
         "top_vsg": [
-            "Tb427VSG-2"
+            "Tb427VSG-2",
+            "Tb427VSG-567"
         ],
         "pubmed_id": 38019264,
         "title": "PI(3,4,5)P3 allosteric regulation of repressor activator protein 1 controls antigenic variation in trypanosomes ",
-        "fastq_type": "single"
+        "fastq_type": "nanopore"
     },
     "PNUTS_1_RNAi48": {
         "controls": [
