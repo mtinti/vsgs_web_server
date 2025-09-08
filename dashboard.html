@@ -56,12 +56,16 @@
 
         /* Simple-DataTables dark theme overrides */
         .dataTable-dropdown label {
-            color: #d1d5db; /* gray-300 */
+            color: #d1d5db !important; /* gray-300 */
         }
-        .dataTable-dropdown .dataTable-selector {
-            color: #e5e7eb; /* gray-200 */
-            background-color: #1f2937; /* gray-800 */
-            border: 1px solid #4b5563; /* gray-600 */
+        .dataTable-dropdown .dataTable-selector,
+        .dataTable-search .dataTable-input {
+            color: #e5e7eb !important; /* gray-200 */
+            background-color: #1f2937 !important; /* gray-800 */
+            border: 1px solid #4b5563 !important; /* gray-600 */
+        }
+        .dataTable-search .dataTable-input::placeholder {
+            color: #9ca3af; /* gray-400 */
         }
 
         /* Visualization-specific styles moved to external CSS files */
