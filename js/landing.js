@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const readTypeText = Object.entries(readTypes)
             .map(([type, count]) => `${count} ${type}`)
             .join(', ');
+        const experimentCount = Object.keys(expConfig).length;
         statsEl.innerHTML = `
             <li><span class="font-bold">${papers.size}</span> papers</li>
-            <li><span class="font-bold">${factors.size}</span> factors</li>
+            <li><span class="font-bold">${factors.size}</span> factors, <span class="font-bold">${experimentCount}</span> experiments</li>
             <li><span class="font-bold">${runCount}</span> run accession numbers</li>
             <li><span class="font-bold">${readTypeText}</span> run accession numbers by read type</li>`;
     } catch (err) {
