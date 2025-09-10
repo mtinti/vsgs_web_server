@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A Meta-Analysis of VSG Expression Alteration in Trypanosoma brucei: Ranking Experimental Factors Through Unified RNA-seq Reanalysis</title>
+    <title>A Meta-Analysis of VSG Expression</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,23 +17,17 @@
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto px-4 py-16 max-w-3xl text-center">
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 mb-6">
-            A Meta-Analysis of VSG Expression Alteration in Trypanosoma brucei: Ranking Experimental Factors Through Unified RNA-seq Reanalysis
-        </h1>
-        <p class="text-lg text-gray-300 mb-8">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 mb-6">A Meta-Analysis of VSG Expression</h1>
+        <p class="text-gray-300 mb-8 text-justify">
             Trypanosoma brucei dedicates 30% of its genome to ~3,000 variant surface glycoprotein (VSG) genes, yet expresses only one at a time—a remarkable antigenic variation system that enables immune evasion. Understanding what alters this strict expression pattern is crucial for therapeutic development against African trypanosomiasis. To identify and rank factors that perturb VSG expression, we performed a comprehensive meta-analysis using a unified Snakemake pipeline (<a href="https://github.com/mtinti/myRna-seq" class="text-indigo-400 hover:underline">https://github.com/mtinti/myRna-seq</a>) to reanalyze 454 RNA-seq runs (168 single-end, 280 paired-end, 6 nanopore datasets) from 31 publications, covering 35 experimental factors across 78 experiments.
         </p>
-        <p class="text-gray-300 mb-12">
+        <p class="text-gray-300 mb-12 text-justify">
             Our standardized approach addressed two key aspects of VSG expression alteration: Which factors induce silent VSG expression? Which decrease active VSG expression? This generated the first systematic ranking of factors by their effect on VSG expression patterns. We also extracted quality control metrics that establish benchmarks for future <em>T. brucei</em> transcriptomics.
         </p>
-        <p class="text-gray-300 mb-12">
+        <p class="text-gray-300 mb-12 text-justify">
             The provisional leaderboard and analysis results are available here:
         </p>
-        <div class="mb-12">
-            <h2 class="text-2xl font-semibold mb-4">Meta-analysis at a Glance</h2>
-            <ul id="stats" class="text-gray-300 space-y-2"></ul>
-        </div>
-        <div class="overflow-x-auto mt-12">
+        <div class="overflow-x-auto mt-12 mb-12">
             <table class="w-full table-auto text-gray-300">
                 <tr>
                     <td class="px-4 py-2">
@@ -50,6 +44,10 @@
                     </td>
                 </tr>
             </table>
+        </div>
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4">Meta-analysis at a Glance</h2>
+            <ul id="stats" class="text-gray-300 space-y-2"></ul>
         </div>
     </div>
     <script src="js/landing.js"></script>
