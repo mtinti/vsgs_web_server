@@ -23,6 +23,13 @@ The Snakemake pipeline used for the standardized RNA-seq processing can be found
 
 <https://github.com/mtinti/myRna-seq>
 
+
+### Methodological Rationale
+
+We adopted a streamlined approach for ranking VSG derepression across experiments, prioritizing comparability and simplicity. Since all VSG sequences were truncated to 1,200 nucleotides to capture only the diverse N-terminal domain, gene length normalization was unnecessary, making CPM (Counts Per Million) an appropriate metric for expression quantification. Rather than implementing statistical tests that would exclude the numerous experiments lacking replicates, we calculated log2 fold changes of CPM values with a pseudocount of 1 to handle zero counts. For ranking VSG families, we summed the CPM fold change contributions of all family members, reasoning that total derepression burden better captures biological impact than averaging approaches. While alternative aggregation methods (mean, median, or top-n VSGs) would produce different absolute values, our preliminary analyses indicated that the relative ranking of experiments—the primary output of interest—remained largely consistent across methods. This pragmatic approach ensures all 78 experiments contribute to the meta-analysis while maintaining mathematical simplicity and biological interpretability, making the results accessible for hypothesis generation and prioritization of factors affecting VSG silencing.
+
+
+
 ---
 
 Please open an issue or submit a pull request if you have suggestions or improvements.
