@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div.addEventListener('mouseover', () => {
                 tooltip.style.display = 'block';
                 const title = config.title ? `${config.title}<br>` : '';
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}Change: ${item.change.toFixed(2)}`;
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}Log2 Fold Change: ${item.change.toFixed(2)}`;
             });
             div.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';
