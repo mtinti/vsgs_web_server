@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip.style.display = 'block';
                 const value = item[currentSilentSort];
                 const title = config.title ? `${config.title}<br>` : '';
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>Fold Change ${title}${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}`;
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title} Fold Change ${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}`;
             });
             li.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';
