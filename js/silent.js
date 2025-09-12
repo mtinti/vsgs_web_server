@@ -65,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip.style.display = 'block';
                 const value = item[currentSilentSort];
                 const title = config.title ? `${config.title}<br>` : '';
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}`;
+                const log2Val = value > 0 ? Math.log2(value) : null;
+                const log2Text = log2Val !== null && isFinite(log2Val) ? log2Val.toFixed(2) : 'N/A';
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}Fold Change ${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}<br>Log2 Fold Change: ${log2Text}`;
             });
             li.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';
