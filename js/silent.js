@@ -9,13 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function initSilent() {
         try {
-            const [csvResp, configResp] = await Promise.all([
+            const [silentResp, mainResp, configResp] = await Promise.all([
                 fetch('data/silentCsvData.csv'),
+                fetch('data/mainCsvData.csv'),
                 fetch('data/exp_config.json')
             ]);
-            const csv = await csvResp.text();
+            const [silentCsv, mainCsv] = await Promise.all([silentResp.text(), mainResp.text()]);
             expConfig = await configResp.json();
-            parseSilentData(csv);
+            parseSilentData(silentCsv, mainCsv);
             createLeaderboardItems();
             renderLeaderboard();
             setupFilters();
@@ -26,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function parseSilentData(csv) {
-        const lines = csv.trim().split('\n');
+    function parseSilentData(silentCsv, mainCsv) {
+        const lines = silentCsv.trim().split('\n');
         const headers = lines[0].split(',').map(h => h.trim());
         if (!headers[0]) headers[0] = 'Experiment';
-        silentData = lines.slice(1).map(line => {
+        const entries = lines.slice(1).map(line => {
             const values = line.split(',');
             const entry = {};
             headers.forEach((h, i) => {
@@ -38,6 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             return entry;
         }).filter(d => d.Experiment);
+
+        const mainLines = mainCsv.trim().split('\n');
+        const mainHeaders = mainLines[0].split(',').map(h => h.trim());
+        if (!mainHeaders[0]) mainHeaders[0] = 'Experiment';
+        const fcIdx = mainHeaders.findIndex(h => h.toLowerCase().includes('fold') && !h.toLowerCase().includes('log2'));
+        const foldIndex = fcIdx > -1 ? fcIdx : 1;
+        const foldMap = {};
+        mainLines.slice(1).forEach(line => {
+            const values = line.split(',');
+            const exp = values[0].trim();
+            const fc = parseFloat(values[foldIndex]) || 0;
+            foldMap[exp] = fc;
+        });
+
+        silentData = entries.map(entry => ({ ...entry, foldChange: foldMap[entry.Experiment] }));
     }
 
     function createLeaderboardItems() {
@@ -65,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip.style.display = 'block';
                 const value = item[currentSilentSort];
                 const title = config.title ? `${config.title}<br>` : '';
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}`;
+                const fc = item.foldChange !== undefined ? `Fold Change: ${item.foldChange.toFixed(2)}<br>` : '';
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}${fc}${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}`;
             });
             li.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';

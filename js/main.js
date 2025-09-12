@@ -26,14 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const lines = csv.trim().split('\n');
         const headers = lines[0].split(',').map(h => h.trim());
         if (!headers[0]) headers[0] = 'Experiment';
-        if (headers[1] && headers[1] !== 'change') headers[1] = 'change';
         mainData = lines.slice(1).map(line => {
             const values = line.split(',');
             const entry = {};
             headers.forEach((h, i) => {
-                entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0;
+                const key = h || `col${i}`;
+                entry[key] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0;
             });
-            entry.magnitude = Math.abs(entry.change);
+            entry.foldChange = entry.foldChange ?? entry.change ?? entry.counts ?? 0;
+            entry.log2FoldChange = entry.log2FoldChange ?? entry.log2 ?? undefined;
+            entry.magnitude = Math.abs(entry.log2FoldChange ?? entry.foldChange);
             return entry;
         }).filter(d => d.Experiment);
     }
@@ -53,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
             div.addEventListener('mouseover', () => {
                 tooltip.style.display = 'block';
                 const title = config.title ? `${config.title}<br>` : '';
-                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}Change: ${item.change.toFixed(2)}`;
+                const fc = `Fold Change: ${item.foldChange.toFixed(2)}`;
+                const l2fc = item.log2FoldChange !== undefined ? `<br>Log2 Fold Change: ${item.log2FoldChange.toFixed(2)}` : '';
+                tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title}${fc}${l2fc}`;
             });
             div.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';
@@ -68,12 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderChart() {
         let filteredData = [...mainData];
-        if (currentMainSort === 'up') filteredData = mainData.filter(d => d.change > 0);
-        else if (currentMainSort === 'down') filteredData = mainData.filter(d => d.change < 0);
+        if (currentMainSort === 'up') filteredData = mainData.filter(d => (d.log2FoldChange ?? d.foldChange) > 0);
+        else if (currentMainSort === 'down') filteredData = mainData.filter(d => (d.log2FoldChange ?? d.foldChange) < 0);
 
         filteredData.sort((a, b) => {
-            if (currentMainSort === 'up') return b.change - a.change;
-            if (currentMainSort === 'down') return a.change - b.change;
+            const aVal = a.log2FoldChange ?? a.foldChange;
+            const bVal = b.log2FoldChange ?? b.foldChange;
+            if (currentMainSort === 'up') return bVal - aVal;
+            if (currentMainSort === 'down') return aVal - bVal;
             return b.magnitude - a.magnitude;
         });
 
@@ -90,7 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const label = el.querySelector('.item-label');
             const barWidth = maxMagnitude > 0 ? (item.magnitude / maxMagnitude) * 50 : 0;
             bar.style.width = `${barWidth}%`;
-            if (item.change >= 0) {
+            const val = item.log2FoldChange ?? item.foldChange;
+            if (val >= 0) {
                 bar.className = 'diverging-bar bar-up';
                 label.style.left = '51%'; label.style.right = 'auto';
             } else {
