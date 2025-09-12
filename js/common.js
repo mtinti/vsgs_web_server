@@ -9,15 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTable = document.getElementById('page-table');
 
     function switchPage(page) {
-        [pageSilent, pageMain, pageQC, pageTable].forEach(p => p.classList.remove('active'));
-        [navSilent, navMain, navQC, navTable].forEach(n => n.classList.remove('active'));
+        const pages = [pageSilent, pageMain, pageTable];
+        const navs = [navSilent, navMain, navTable];
+        if (navQC && pageQC) {
+            pages.push(pageQC);
+            navs.push(navQC);
+        }
+        pages.forEach(p => p.classList.remove('active'));
+        navs.forEach(n => n.classList.remove('active'));
         if (page === 'silent') {
             pageSilent.classList.add('active');
             navSilent.classList.add('active');
         } else if (page === 'main') {
             pageMain.classList.add('active');
             navMain.classList.add('active');
-        } else if (page === 'qc') {
+        } else if (page === 'qc' && navQC && pageQC) {
             pageQC.classList.add('active');
             navQC.classList.add('active');
         } else if (page === 'table') {
@@ -28,7 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleHash() {
         const hash = window.location.hash.replace('#', '');
-        if (['silent', 'main', 'qc', 'table'].includes(hash)) {
+        const valid = ['silent', 'main', 'table'];
+        if (navQC && pageQC) {
+            valid.push('qc');
+        }
+        if (valid.includes(hash)) {
             switchPage(hash);
         } else {
             switchPage('silent');
@@ -45,10 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.hash = 'main';
     });
 
-    navQC.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.hash = 'qc';
-    });
+    if (navQC) {
+        navQC.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.hash = 'qc';
+        });
+    }
 
     navTable.addEventListener('click', (e) => {
         e.preventDefault();
