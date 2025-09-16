@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let silentData = [], currentSilentSort = 'sum', isExpanded = false, expConfig = {};
     const itemHeightSilent = 76, displayLimit = 20;
 
+    const moveTooltip = (event) => {
+        if (!tooltip) return;
+        tooltip.style.left = `${event.clientX + 15}px`;
+        tooltip.style.top = `${event.clientY + 15}px`;
+    };
+
     async function initSilent() {
         try {
             const [csvResp, configResp] = await Promise.all([
@@ -61,19 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (config.pubmed_id) {
                 link.href = `https://pubmed.ncbi.nlm.nih.gov/${config.pubmed_id}/`;
             }
-            li.addEventListener('mouseover', () => {
+            li.addEventListener('mouseover', (e) => {
                 tooltip.style.display = 'block';
                 const value = item[currentSilentSort];
                 const title = config.title ? `${config.title}<br>` : '';
                 tooltip.innerHTML = `<strong>${item.Experiment}</strong><br>${title} Fold Change ${currentSilentSort.toUpperCase()}: ${value.toFixed(2)}`;
+                moveTooltip(e);
             });
             li.addEventListener('mouseout', () => {
                 tooltip.style.display = 'none';
             });
-            li.addEventListener('mousemove', (e) => {
-                tooltip.style.left = `${e.clientX + 15}px`;
-                tooltip.style.top = `${e.clientY + 15}px`;
-            });
+            li.addEventListener('mousemove', moveTooltip);
             leaderboardContainer.appendChild(li);
         });
     }
@@ -106,6 +110,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.target.classList.add('active');
                 renderLeaderboard();
             }
+        });
+
+        filtersSilent.querySelectorAll('button').forEach(button => {
+            const tooltipText = button.dataset.tooltip;
+            if (!tooltipText) return;
+
+            button.addEventListener('mouseenter', (e) => {
+                tooltip.style.display = 'block';
+                tooltip.innerHTML = tooltipText;
+                moveTooltip(e);
+            });
+
+            button.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+
+            button.addEventListener('mousemove', moveTooltip);
         });
 
         if (silentData.length > displayLimit) {
