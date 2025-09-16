@@ -125,9 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const tbody = table.querySelector('tbody');
         Object.entries(config).forEach(([experiment, info]) => {
             const pub = info.pubmed_id || '';
-            const title = info.title || '';
             const safeExperiment = escapeHtml(experiment);
-            const safeTitle = escapeHtml(title);
             const safePub = pub ? escapeHtml(pub) : '';
             const pubCell = safePub
                 ? `<a href="https://pubmed.ncbi.nlm.nih.gov/${safePub}/" target="_blank" class="text-indigo-400 hover:underline">${safePub}</a>`
@@ -146,7 +144,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${escapeHtml(metadata.sample_alias || '')}</td>
                     <td>${escapeHtml(metadata.library_name || '')}</td>
                     <td>${pubCell}</td>
-                    <td>${safeTitle}</td>
                 `;
                 tbody.appendChild(tr);
             };
