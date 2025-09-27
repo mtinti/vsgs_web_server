@@ -2,15 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navSilent = document.getElementById('nav-silent');
     const navMain = document.getElementById('nav-main');
     const navQC = document.getElementById('nav-qc');
+    const navScatter = document.getElementById('nav-scatter');
     const navTable = document.getElementById('nav-table');
     const pageSilent = document.getElementById('page-silent');
     const pageMain = document.getElementById('page-main');
     const pageQC = document.getElementById('page-qc');
+    const pageScatter = document.getElementById('page-scatter');
     const pageTable = document.getElementById('page-table');
 
     function switchPage(page) {
-        const pages = [pageSilent, pageMain, pageTable];
-        const navs = [navSilent, navMain, navTable];
+        const pages = [pageSilent, pageMain, pageScatter, pageTable];
+        const navs = [navSilent, navMain, navScatter, navTable];
         if (navQC && pageQC) {
             pages.push(pageQC);
             navs.push(navQC);
@@ -23,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (page === 'main') {
             pageMain.classList.add('active');
             navMain.classList.add('active');
+        } else if (page === 'scatter') {
+            pageScatter.classList.add('active');
+            navScatter.classList.add('active');
         } else if (page === 'qc' && navQC && pageQC) {
             pageQC.classList.add('active');
             navQC.classList.add('active');
@@ -34,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleHash() {
         const hash = window.location.hash.replace('#', '');
-        const valid = ['silent', 'main', 'table'];
+        const valid = ['silent', 'main', 'scatter', 'table'];
         if (navQC && pageQC) {
             valid.push('qc');
         }
@@ -53,6 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
     navMain.addEventListener('click', (e) => {
         e.preventDefault();
         window.location.hash = 'main';
+    });
+
+    navScatter.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.hash = 'scatter';
     });
 
     if (navQC) {
