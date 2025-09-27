@@ -1,11 +1,11 @@
 {
     "BDF2_1_KO48": {
+        "experiment": "BDF2_1_KO48",
         "controls": [
             "SRR2154097"
         ],
         "treatments": [
-            "SRR2154098",
-            "SRR2154112"
+            "SRR2154098"
         ],
         "top_vsg": [
             "Tb427VSG-2"
@@ -15,6 +15,7 @@
         "fastq_type": "single"
     },
     "BDF3_1_KO24": {
+        "experiment": "BDF3_1_KO24",
         "controls": [
             "SRR2154093"
         ],
@@ -29,10 +30,9 @@
         "fastq_type": "single"
     },
     "BET151_1_Drug12h": {
+        "experiment": "BET151_1_Drug12h",
         "controls": [
-            "SRR2154067",
-            "SRR2154069",
-            "SRR2154113"
+            "SRR2154069"
         ],
         "treatments": [
             "SRR2154095"
@@ -45,10 +45,9 @@
         "fastq_type": "single"
     },
     "BET151_1_Drug24h": {
+        "experiment": "BET151_1_Drug24h",
         "controls": [
-            "SRR2154067",
-            "SRR2154069",
-            "SRR2154113"
+            "SRR2154069"
         ],
         "treatments": [
             "SRR2154096"
@@ -61,10 +60,9 @@
         "fastq_type": "single"
     },
     "BET151_1_Drug3h": {
+        "experiment": "BET151_1_Drug3h",
         "controls": [
-            "SRR2154067",
-            "SRR2154069",
-            "SRR2154113"
+            "SRR2154069"
         ],
         "treatments": [
             "SRR2154091"
@@ -77,10 +75,9 @@
         "fastq_type": "single"
     },
     "BET151_1_Drug48h": {
+        "experiment": "BET151_1_Drug48h",
         "controls": [
-            "SRR2154067",
-            "SRR2154069",
-            "SRR2154113"
+            "SRR2154069"
         ],
         "treatments": [
             "SRR2154088"
@@ -93,10 +90,9 @@
         "fastq_type": "single"
     },
     "BET151_1_Drug6h": {
+        "experiment": "BET151_1_Drug6h",
         "controls": [
-            "SRR2154067",
-            "SRR2154069",
-            "SRR2154113"
+            "SRR2154069"
         ],
         "treatments": [
             "SRR2154092"
@@ -109,10 +105,9 @@
         "fastq_type": "single"
     },
     "BET151_1_Drug72h": {
+        "experiment": "BET151_1_Drug72h",
         "controls": [
-            "SRR2154067",
-            "SRR2154069",
-            "SRR2154113"
+            "SRR2154069"
         ],
         "treatments": [
             "SRR2154089"
@@ -125,6 +120,7 @@
         "fastq_type": "single"
     },
     "CAF1b_1_RNAi24": {
+        "experiment": "CAF1b_1_RNAi24",
         "controls": [
             "ERR3447783",
             "ERR3447784",
@@ -161,6 +157,7 @@
         "fastq_type": "paired"
     },
     "CFB2_1_RNAi9": {
+        "experiment": "CFB2_1_RNAi9",
         "controls": [
             "ERR4704791",
             "ERR4704794",
@@ -179,6 +176,7 @@
         "fastq_type": "single"
     },
     "DFO_1_DFO": {
+        "experiment": "DFO_1_DFO",
         "controls": [
             "SRR12886090",
             "SRR12886089",
@@ -197,6 +195,7 @@
         "fastq_type": "paired"
     },
     "DFO_1_DFOFe": {
+        "experiment": "DFO_1_DFOFe",
         "controls": [
             "SRR12886090",
             "SRR12886089",
@@ -215,6 +214,7 @@
         "fastq_type": "paired"
     },
     "DFO_1_Fe": {
+        "experiment": "DFO_1_Fe",
         "controls": [
             "SRR12886090",
             "SRR12886089",
@@ -233,6 +233,7 @@
         "fastq_type": "paired"
     },
     "DRBD18_1_RNAi12": {
+        "experiment": "DRBD18_1_RNAi12",
         "controls": [
             "ERR4846467",
             "ERR4846468",
@@ -251,6 +252,7 @@
         "fastq_type": "single"
     },
     "H1_1_RNAi96": {
+        "experiment": "H1_1_RNAi96",
         "controls": [
             "ERR556937",
             "ERR556938"
@@ -267,6 +269,7 @@
         "fastq_type": "paired"
     },
     "H3H4_1_KOH3": {
+        "experiment": "H3H4_1_KOH3",
         "controls": [
             "SRR14459737",
             "SRR14459736",
@@ -285,6 +288,7 @@
         "fastq_type": "paired"
     },
     "H3H4_1_KOH3J": {
+        "experiment": "H3H4_1_KOH3J",
         "controls": [
             "SRR14459737",
             "SRR14459736",
@@ -303,6 +307,7 @@
         "fastq_type": "paired"
     },
     "H3H4_1_KOH4": {
+        "experiment": "H3H4_1_KOH4",
         "controls": [
             "SRR14459737",
             "SRR14459736",
@@ -321,6 +326,7 @@
         "fastq_type": "paired"
     },
     "H3H4_1_KOH4J": {
+        "experiment": "H3H4_1_KOH4J",
         "controls": [
             "SRR14459737",
             "SRR14459736",
@@ -339,6 +345,7 @@
         "fastq_type": "paired"
     },
     "H3H4_1_KOJ2": {
+        "experiment": "H3H4_1_KOJ2",
         "controls": [
             "SRR14459737",
             "SRR14459736",
@@ -357,6 +364,7 @@
         "fastq_type": "paired"
     },
     "H3H4_2_KO48": {
+        "experiment": "H3H4_2_KO48",
         "controls": [
             "SRR14459727",
             "SRR14459726",
@@ -375,6 +383,7 @@
         "fastq_type": "paired"
     },
     "H3H4_3_KO48": {
+        "experiment": "H3H4_3_KO48",
         "controls": [
             "SRR14459720",
             "SRR14459719",
@@ -393,6 +402,7 @@
         "fastq_type": "paired"
     },
     "H3_1_KOH3": {
+        "experiment": "H3_1_KOH3",
         "controls": [
             "SRR2982158",
             "SRR2982159",
@@ -411,6 +421,7 @@
         "fastq_type": "single"
     },
     "H3_1_KOH3J": {
+        "experiment": "H3_1_KOH3J",
         "controls": [
             "SRR2982158",
             "SRR2982159",
@@ -429,6 +440,7 @@
         "fastq_type": "single"
     },
     "H3_1_KOJ": {
+        "experiment": "H3_1_KOJ",
         "controls": [
             "SRR2982158",
             "SRR2982159",
@@ -447,6 +459,7 @@
         "fastq_type": "single"
     },
     "IPMK_1_RNAi36": {
+        "experiment": "IPMK_1_RNAi36",
         "controls": [
             "SRR5314672",
             "SRR5315220"
@@ -463,6 +476,7 @@
         "fastq_type": "single"
     },
     "IPMK_2_RNAi36": {
+        "experiment": "IPMK_2_RNAi36",
         "controls": [
             "SRR5253723"
         ],
@@ -477,6 +491,7 @@
         "fastq_type": "paired"
     },
     "MCMBP_1_KO24": {
+        "experiment": "MCMBP_1_KO24",
         "controls": [
             "SRR7653086",
             "SRR7653087",
@@ -497,6 +512,7 @@
         "fastq_type": "single"
     },
     "MCMBP_1_KO48": {
+        "experiment": "MCMBP_1_KO48",
         "controls": [
             "SRR7653086",
             "SRR7653087",
@@ -517,6 +533,7 @@
         "fastq_type": "single"
     },
     "PIP5Pase_1_KO": {
+        "experiment": "PIP5Pase_1_KO",
         "controls": [
             "SRR7401111"
         ],
@@ -532,6 +549,7 @@
         "fastq_type": "single"
     },
     "PIP5Pase_2_D360A_N362A": {
+        "experiment": "PIP5Pase_2_D360A_N362A",
         "controls": [
             "SRR23839022",
             "SRR23839021",
@@ -551,6 +569,7 @@
         "fastq_type": "nanopore"
     },
     "PNUTS_1_RNAi48": {
+        "experiment": "PNUTS_1_RNAi48",
         "controls": [
             "SRR9951065",
             "SRR9951061",
@@ -569,6 +588,7 @@
         "fastq_type": "single"
     },
     "RBP10_1_RNAi24": {
+        "experiment": "RBP10_1_RNAi24",
         "controls": [
             "ERR1328278",
             "ERR1328279"
@@ -585,6 +605,7 @@
         "fastq_type": "single"
     },
     "RBP10_2_RNAi24": {
+        "experiment": "RBP10_2_RNAi24",
         "controls": [
             "ERR1328280",
             "ERR1328281"
@@ -601,6 +622,7 @@
         "fastq_type": "single"
     },
     "RBP10_3_RNAi24": {
+        "experiment": "RBP10_3_RNAi24",
         "controls": [
             "ERR1328282",
             "ERR1328283"
@@ -617,6 +639,7 @@
         "fastq_type": "single"
     },
     "RBP33_1_RNAi48": {
+        "experiment": "RBP33_1_RNAi48",
         "controls": [
             "SRR16573965",
             "SRR16573966",
@@ -635,6 +658,7 @@
         "fastq_type": "paired"
     },
     "RBP42_1_KO24": {
+        "experiment": "RBP42_1_KO24",
         "controls": [
             "SRR14768796",
             "SRR14768795",
@@ -653,6 +677,7 @@
         "fastq_type": "single"
     },
     "RBP42_1_KO48": {
+        "experiment": "RBP42_1_KO48",
         "controls": [
             "SRR14768796",
             "SRR14768795",
@@ -671,6 +696,7 @@
         "fastq_type": "single"
     },
     "RBP42_1_KO72": {
+        "experiment": "RBP42_1_KO72",
         "controls": [
             "SRR14768796",
             "SRR14768795",
@@ -689,6 +715,7 @@
         "fastq_type": "single"
     },
     "RNaseH1_1_KO": {
+        "experiment": "RNaseH1_1_KO",
         "controls": [
             "ERR2812445"
         ],
@@ -703,6 +730,7 @@
         "fastq_type": "paired"
     },
     "RNaseH2A_1_RNAi24": {
+        "experiment": "RNaseH2A_1_RNAi24",
         "controls": [
             "ERR3014707",
             "ERR3014708"
@@ -719,6 +747,7 @@
         "fastq_type": "paired"
     },
     "RNaseH2A_2_RNAi36": {
+        "experiment": "RNaseH2A_2_RNAi36",
         "controls": [
             "ERR3014711",
             "ERR3014712"
@@ -735,6 +764,7 @@
         "fastq_type": "paired"
     },
     "SET27_1_KO": {
+        "experiment": "SET27_1_KO",
         "controls": [
             "SRR20081822",
             "SRR20081826"
@@ -752,6 +782,7 @@
         "fastq_type": "paired"
     },
     "SET27_1_sKO": {
+        "experiment": "SET27_1_sKO",
         "controls": [
             "SRR20081822",
             "SRR20081826"
@@ -769,6 +800,7 @@
         "fastq_type": "paired"
     },
     "SNF2PH_1_RNAi48": {
+        "experiment": "SNF2PH_1_RNAi48",
         "controls": [
             "SRR10034555",
             "SRR10034554"
@@ -785,6 +817,7 @@
         "fastq_type": "paired"
     },
     "TFR_1_RNAi24": {
+        "experiment": "TFR_1_RNAi24",
         "controls": [
             "SRR12886086",
             "SRR12886085",
@@ -803,6 +836,7 @@
         "fastq_type": "single"
     },
     "TbATR_1_RNAi24": {
+        "experiment": "TbATR_1_RNAi24",
         "controls": [
             "ERR2222763",
             "ERR2222767",
@@ -821,6 +855,7 @@
         "fastq_type": "paired"
     },
     "TbATR_2_RNAi36": {
+        "experiment": "TbATR_2_RNAi36",
         "controls": [
             "ERR2222765",
             "ERR2222769",
@@ -839,6 +874,7 @@
         "fastq_type": "paired"
     },
     "TbESB1_1_RNAi24": {
+        "experiment": "TbESB1_1_RNAi24",
         "controls": [
             "SRR17052113",
             "SRR19091061",
@@ -859,6 +895,7 @@
         "fastq_type": "paired"
     },
     "TbESB1_2_KO48": {
+        "experiment": "TbESB1_2_KO48",
         "controls": [
             "SRR17052110",
             "SRR19091057",
@@ -879,6 +916,7 @@
         "fastq_type": "paired"
     },
     "TbESB1_3_OE24": {
+        "experiment": "TbESB1_3_OE24",
         "controls": [
             "SRR17052122",
             "SRR19091039",
@@ -899,6 +937,7 @@
         "fastq_type": "paired"
     },
     "TbHAT_1_RNAi48HAT1": {
+        "experiment": "TbHAT_1_RNAi48HAT1",
         "controls": [
             "SRR11122981",
             "SRR11122982",
@@ -917,6 +956,7 @@
         "fastq_type": "paired"
     },
     "TbHAT_1_RNAi48HAT2": {
+        "experiment": "TbHAT_1_RNAi48HAT2",
         "controls": [
             "SRR11122981",
             "SRR11122982",
@@ -935,6 +975,7 @@
         "fastq_type": "paired"
     },
     "TbPP1one_1_RNAi24": {
+        "experiment": "TbPP1one_1_RNAi24",
         "controls": [
             "SRR26338096",
             "SRR26338091",
@@ -953,6 +994,7 @@
         "fastq_type": "paired"
     },
     "TbPP1seven_1_RNAi24": {
+        "experiment": "TbPP1seven_1_RNAi24",
         "controls": [
             "SRR26338086",
             "SRR26338087",
@@ -971,6 +1013,7 @@
         "fastq_type": "paired"
     },
     "TbRAP1_1_2SD": {
+        "experiment": "TbRAP1_1_2SD",
         "controls": [
             "SRR11449135",
             "SRR11449136",
@@ -989,6 +1032,7 @@
         "fastq_type": "paired"
     },
     "TbRAP1_1_5A": {
+        "experiment": "TbRAP1_1_5A",
         "controls": [
             "SRR11449135",
             "SRR11449136",
@@ -1007,6 +1051,7 @@
         "fastq_type": "paired"
     },
     "TbRAP1_1_KO": {
+        "experiment": "TbRAP1_1_KO",
         "controls": [
             "SRR11449135",
             "SRR11449136",
@@ -1025,6 +1070,7 @@
         "fastq_type": "paired"
     },
     "TbRAP1_2_dMyb": {
+        "experiment": "TbRAP1_2_dMyb",
         "controls": [
             "SRR10871270",
             "SRR10871271",
@@ -1043,6 +1089,7 @@
         "fastq_type": "paired"
     },
     "TbSAP_1_RNAi72": {
+        "experiment": "TbSAP_1_RNAi72",
         "controls": [
             "SRR12971333",
             "SRR12971334",
@@ -1061,6 +1108,7 @@
         "fastq_type": "paired"
     },
     "VEX1_1_Oe72": {
+        "experiment": "VEX1_1_Oe72",
         "controls": [
             "ERR1413153",
             "ERR1413154",
@@ -1079,6 +1127,7 @@
         "fastq_type": "paired"
     },
     "VEX1_2_RNAi72": {
+        "experiment": "VEX1_2_RNAi72",
         "controls": [
             "ERR789033",
             "ERR789034"
@@ -1095,6 +1144,7 @@
         "fastq_type": "paired"
     },
     "VEX1_4_RNAi24": {
+        "experiment": "VEX1_4_RNAi24",
         "controls": [
             "SRR17052104"
         ],
@@ -1109,6 +1159,7 @@
         "fastq_type": "paired"
     },
     "VEX1_5_RNAi48": {
+        "experiment": "VEX1_5_RNAi48",
         "controls": [
             "SRR17052103"
         ],
@@ -1123,6 +1174,7 @@
         "fastq_type": "paired"
     },
     "VEX1_6_RNAi72": {
+        "experiment": "VEX1_6_RNAi72",
         "controls": [
             "SRR17052101"
         ],
@@ -1137,6 +1189,7 @@
         "fastq_type": "paired"
     },
     "VEX1and2_1_RNAi24": {
+        "experiment": "VEX1and2_1_RNAi24",
         "controls": [
             "ERR3447807",
             "ERR3447808",
@@ -1185,6 +1238,7 @@
         "fastq_type": "paired"
     },
     "VEX1and2_1_RNAi48": {
+        "experiment": "VEX1and2_1_RNAi48",
         "controls": [
             "ERR3447807",
             "ERR3447808",
@@ -1233,6 +1287,7 @@
         "fastq_type": "paired"
     },
     "VEX2_1_RNAi24": {
+        "experiment": "VEX2_1_RNAi24",
         "controls": [
             "ERR3447773",
             "ERR3447772",
@@ -1254,6 +1309,7 @@
         "fastq_type": "paired"
     },
     "VEX2_1_RNAi48": {
+        "experiment": "VEX2_1_RNAi48",
         "controls": [
             "ERR3447773",
             "ERR3447772",
@@ -1275,6 +1331,7 @@
         "fastq_type": "paired"
     },
     "ZC3H28_1_RNAi10": {
+        "experiment": "ZC3H28_1_RNAi10",
         "controls": [
             "ERR6325900",
             "ERR6325901",
@@ -1295,6 +1352,7 @@
         "fastq_type": "single"
     },
     "ZC3H28_1_RNAi14": {
+        "experiment": "ZC3H28_1_RNAi14",
         "controls": [
             "ERR6325900",
             "ERR6325901",
@@ -1314,6 +1372,7 @@
         "fastq_type": "single"
     },
     "ZC3H28_1_RNAi16": {
+        "experiment": "ZC3H28_1_RNAi16",
         "controls": [
             "ERR6325900",
             "ERR6325901",
@@ -1333,6 +1392,7 @@
         "fastq_type": "single"
     },
     "ZC3H28_1_RNAi24": {
+        "experiment": "ZC3H28_1_RNAi24",
         "controls": [
             "ERR6325900",
             "ERR6325901",
@@ -1352,6 +1412,7 @@
         "fastq_type": "single"
     },
     "ZC3H40_1_RNAi72": {
+        "experiment": "ZC3H40_1_RNAi72",
         "controls": [
             "ERR3383643",
             "ERR3383645"
@@ -1368,6 +1429,7 @@
         "fastq_type": "paired"
     },
     "ZC3H5_2_RNAi12": {
+        "experiment": "ZC3H5_2_RNAi12",
         "controls": [
             "ERR3380213",
             "ERR3380217"
@@ -1384,6 +1446,7 @@
         "fastq_type": "single"
     },
     "ZC3H5_3_RNAi12": {
+        "experiment": "ZC3H5_3_RNAi12",
         "controls": [
             "ERR3380216",
             "ERR3380220"
@@ -1400,6 +1463,7 @@
         "fastq_type": "single"
     },
     "ZC3H5_4_RNAi12": {
+        "experiment": "ZC3H5_4_RNAi12",
         "controls": [
             "ERR3380215",
             "ERR3380219"
@@ -1416,6 +1480,7 @@
         "fastq_type": "single"
     },
     "ZC3H5_5_RNAi12": {
+        "experiment": "ZC3H5_5_RNAi12",
         "controls": [
             "ERR3380214",
             "ERR3380218"
