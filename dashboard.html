@@ -55,6 +55,23 @@
         }
 
         /* Visualization-specific styles moved to external CSS files */
+        .plot-embed {
+            width: 100%;
+            height: 560px;
+            border: 0;
+        }
+
+        @media (min-width: 768px) {
+            .plot-embed {
+                height: 600px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .plot-embed {
+                height: 640px;
+            }
+        }
     </style>
 </head>
 <body class="text-white antialiased">
@@ -143,21 +160,21 @@
                 <p class="mt-2 text-lg text-gray-400">Comparative view of modulation metrics</p>
             </header>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-800/50 rounded-lg p-4">
+                <div class="bg-gray-800/50 rounded-lg p-4 flex flex-col">
                     <h2 class="text-lg font-semibold text-gray-200 mb-3">BES vs. Main VSG</h2>
-                    <iframe src="scatter_plots/bes_vs_main_vsg.html" title="BES vs Main VSG scatter plot" class="w-full h-72 rounded" loading="lazy"></iframe>
+                    <iframe src="scatter_plots/bes_vs_main_vsg.html" title="BES vs Main VSG scatter plot" class="plot-embed rounded" loading="lazy"></iframe>
                 </div>
-                <div class="bg-gray-800/50 rounded-lg p-4">
+                <div class="bg-gray-800/50 rounded-lg p-4 flex flex-col">
                     <h2 class="text-lg font-semibold text-gray-200 mb-3">MES vs. Main VSG</h2>
-                    <iframe src="scatter_plots/MES_vs_main_vsg.html" title="MES vs Main VSG scatter plot" class="w-full h-72 rounded" loading="lazy"></iframe>
+                    <iframe src="scatter_plots/MES_vs_main_vsg.html" title="MES vs Main VSG scatter plot" class="plot-embed rounded" loading="lazy"></iframe>
                 </div>
-                <div class="bg-gray-800/50 rounded-lg p-4">
+                <div class="bg-gray-800/50 rounded-lg p-4 flex flex-col">
                     <h2 class="text-lg font-semibold text-gray-200 mb-3">MiniChromosomal vs. Main VSG</h2>
-                    <iframe src="scatter_plots/MC_vs_main_vsg.html" title="MiniChromosomal vs Main VSG scatter plot" class="w-full h-72 rounded" loading="lazy"></iframe>
+                    <iframe src="scatter_plots/MC_vs_main_vsg.html" title="MiniChromosomal vs Main VSG scatter plot" class="plot-embed rounded" loading="lazy"></iframe>
                 </div>
-                <div class="bg-gray-800/50 rounded-lg p-4">
+                <div class="bg-gray-800/50 rounded-lg p-4 flex flex-col">
                     <h2 class="text-lg font-semibold text-gray-200 mb-3">Array vs. Main VSG</h2>
-                    <iframe src="scatter_plots/array_vs_main_vsg.html" title="Array vs Main VSG scatter plot" class="w-full h-72 rounded" loading="lazy"></iframe>
+                    <iframe src="scatter_plots/array_vs_main_vsg.html" title="Array vs Main VSG scatter plot" class="plot-embed rounded" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
