@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="flex-grow overflow-hidden">
                     <a class="font-semibold text-white truncate" target="_blank" rel="noopener"></a>
                     <div class="bar-container relative mt-1">
-                        <span class="bar-label absolute -top-6 left-0 text-xs font-semibold text-indigo-200"></span>
+                        <span class="bar-label absolute text-xs font-semibold text-indigo-200 whitespace-nowrap"></span>
                         <div class="bar-track w-full bg-black/30 rounded-full h-2.5 overflow-hidden">
                             <div class="bar bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full" style="width: 0%; transition: width 0.6s ease;"></div>
                         </div>
@@ -101,15 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
             rankBadge.classList.remove('rank-1', 'rank-2', 'rank-3');
             if (rank <= 3) rankBadge.classList.add(`rank-${rank}`);
             el.querySelector('.rank-text').textContent = rank;
-            el.querySelector('.bar').style.width = `${maxVal > 0 ? (item[currentSilentSort] / maxVal) * 100 : 0}%`;
+            const bar = el.querySelector('.bar');
+            const barPercent = maxVal > 0 ? (item[currentSilentSort] / maxVal) * 100 : 0;
+            bar.style.width = `${barPercent}%`;
             const label = el.querySelector('.bar-label');
             if (label) {
                 if (index === 0 && silentData.length > 0) {
                     label.textContent = `Top Fold Change = ${maxVal.toFixed(2)}`;
                     label.style.opacity = '1';
+                    label.style.top = '-1.5rem';
+                    label.style.left = `calc(${barPercent}% - 0.5rem)`;
+                    label.style.transform = 'translateX(-100%)';
                 } else {
                     label.textContent = '';
                     label.style.opacity = '0';
+                    label.style.removeProperty('left');
+                    label.style.removeProperty('top');
+                    label.style.removeProperty('transform');
                 }
             }
         });
