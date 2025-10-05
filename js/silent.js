@@ -57,8 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="flex-grow overflow-hidden">
                     <a class="font-semibold text-white truncate" target="_blank" rel="noopener"></a>
-                    <div class="w-full bg-black/30 rounded-full h-2.5 mt-1 overflow-hidden">
-                        <div class="bar bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full" style="width: 0%; transition: width 0.6s ease;"></div>
+                    <div class="bar-container relative mt-1">
+                        <span class="bar-label absolute -top-6 left-0 text-xs font-semibold text-indigo-200"></span>
+                        <div class="bar-track w-full bg-black/30 rounded-full h-2.5 overflow-hidden">
+                            <div class="bar bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full" style="width: 0%; transition: width 0.6s ease;"></div>
+                        </div>
                     </div>
                 </div>`;
             const link = li.querySelector('a');
@@ -99,6 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (rank <= 3) rankBadge.classList.add(`rank-${rank}`);
             el.querySelector('.rank-text').textContent = rank;
             el.querySelector('.bar').style.width = `${maxVal > 0 ? (item[currentSilentSort] / maxVal) * 100 : 0}%`;
+            const label = el.querySelector('.bar-label');
+            if (label) {
+                if (index === 0 && silentData.length > 0) {
+                    label.textContent = `Top Fold Change = ${maxVal.toFixed(2)}`;
+                    label.style.opacity = '1';
+                } else {
+                    label.textContent = '';
+                    label.style.opacity = '0';
+                }
+            }
         });
     }
 
