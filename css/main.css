@@ -8,7 +8,7 @@ textarea {
 
 #chart-container {
     transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 1.5rem 0 3rem;
+    padding: 1.5rem 0 1.5rem;
 }
 .chart-item {
     position: absolute;
@@ -55,9 +55,6 @@ textarea {
     pointer-events: none;
     z-index: 1;
 }
-.axis-baseline-bottom {
-    bottom: 0;
-}
 .axis-baseline-top {
     top: 0.5rem;
 }
@@ -67,9 +64,6 @@ textarea {
     color: #9ca3af; /* text-gray-400 */
     letter-spacing: 0.05em;
     text-transform: uppercase;
-}
-.axis-baseline-bottom .axis-baseline-label {
-    bottom: calc(100% + 0.25rem);
 }
 .axis-baseline-top .axis-baseline-label {
     top: calc(100% + 0.25rem);
