@@ -55,6 +55,14 @@ textarea {
     pointer-events: none;
     z-index: 1;
 }
+.axis-mid-label {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    font-weight: 600;
+    color: #d1d5db; /* text-gray-300 */
+}
 .axis-baseline-top {
     top: 0.5rem;
 }
