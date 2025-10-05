@@ -46,31 +46,32 @@ textarea {
     z-index: 1;
     pointer-events: none;
 }
-.axis-limit {
+.axis-baseline {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #6b7280; /* bg-gray-500 */
-    opacity: 0.7;
+    left: 0;
+    right: 0;
+    bottom: 0.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(107, 114, 128, 0.1), rgba(107, 114, 128, 0.7), rgba(107, 114, 128, 0.1));
     pointer-events: none;
     z-index: 1;
 }
-.axis-limit-left {
-    left: 0;
-}
-.axis-limit-right {
-    right: 0;
-}
-.axis-limit-label {
+.axis-baseline-label {
     position: absolute;
-    bottom: -1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -1.25rem;
     font-size: 0.75rem;
     color: #9ca3af; /* text-gray-400 */
     letter-spacing: 0.05em;
     text-transform: uppercase;
+}
+.axis-baseline-label-left {
+    left: 0;
+    transform: translateX(-10%);
+}
+.axis-baseline-label-right {
+    right: 0;
+    transform: translateX(10%);
+    text-align: right;
 }
 .item-label {
     position: absolute;
