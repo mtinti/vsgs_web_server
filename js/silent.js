@@ -42,6 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
             headers.forEach((h, i) => {
                 entry[h] = i === 0 ? values[i].trim() : parseFloat(values[i]) || 0;
             });
+
+            const leaderboardKeys = ['BES', 'MES', 'MC', 'array'];
+            let sum = 0;
+
+            leaderboardKeys.forEach(key => {
+                if (!(key in entry)) return;
+                const adjustedValue = Math.max(0, (entry[key] || 0) - 1);
+                entry[key] = adjustedValue;
+                sum += adjustedValue;
+            });
+
+            entry.sum = sum;
+
             return entry;
         }).filter(d => d.Experiment);
     }
